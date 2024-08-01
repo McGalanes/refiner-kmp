@@ -1,4 +1,4 @@
-package com.github.mcagalanes.refiner
+package com.github.mcgalanes.refiner
 
 import App
 import android.os.Bundle
