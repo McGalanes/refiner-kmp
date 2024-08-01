@@ -16,4 +16,12 @@ import com.github.mcgalanes.refiner.data.local.model.UserStory
 )
 abstract class RefinerDatabase : RoomDatabase() {
     abstract val userStoryDao: UserStoryDao
+
+    companion object {
+        const val DATABASE_NAME = "refiner_db"
+    }
+}
+
+expect class RefinerDatabaseProvider {
+    fun getInstance(): RefinerDatabase
 }

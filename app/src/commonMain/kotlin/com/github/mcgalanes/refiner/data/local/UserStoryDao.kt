@@ -32,4 +32,8 @@ interface UserStoryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun createGherkinLine(gherkinLine: GherkinLine): Long
+
+    @Transaction
+    @Query("DELETE FROM `user_story`")
+    suspend fun deleteAllUserStories()
 }

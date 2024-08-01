@@ -1,11 +1,16 @@
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import com.github.mcgalanes.refiner.core.injection.initKoin
 
-fun main() = application {
-    Window(
-        onCloseRequest = ::exitApplication,
-        title = "refiner",
-    ) {
-        App()
+fun main() {
+    initKoin()
+
+    application {
+        Window(
+            onCloseRequest = ::exitApplication,
+            title = "refiner",
+        ) {
+            App()
+        }
     }
 }
