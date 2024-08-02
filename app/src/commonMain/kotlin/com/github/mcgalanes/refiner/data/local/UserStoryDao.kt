@@ -1,39 +1,49 @@
 package com.github.mcgalanes.refiner.data.local
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Transaction
-import com.github.mcgalanes.refiner.data.local.model.Criteria
-import com.github.mcgalanes.refiner.data.local.model.GherkinLine
-import com.github.mcgalanes.refiner.data.local.model.UserStory
-import com.github.mcgalanes.refiner.data.local.model.relation.UserStoryWithCriterias
+import app.cash.sqldelight.coroutines.asFlow
+import app.cash.sqldelight.coroutines.mapToList
+import com.github.mcgalanes.refiner.database.RefinerDatabase
+import com.github.mcgalanes.refiner.database.UserStory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 
-@Dao
-interface UserStoryDao {
-    @Transaction
-    @Query("SELECT * FROM `user_story`")
-    fun getUserStoriesWithCriterias(): Flow<List<UserStoryWithCriterias>>
+class UserStoryDao(database: RefinerDatabase) {
+    private val userStoryQueries = database.userStoryQueries
+    private val criteriaQueries = database.criteriaQueries
+    private val gherkinLineQueries = database.gherkineLineQueries
 
-    @Transaction
-    @Query("SELECT * FROM `user_story` WHERE id = :id")
-    fun getUserStoryWithCriterias(id: Long): Flow<UserStoryWithCriterias>
+    fun getAllUserStories(): Flow<List<UserStory>> =
+        userStoryQueries.selectAll().asFlow().mapToList(Dispatchers.IO)
 
-    @Query("SELECT * FROM `gherkin_line` WHERE criteria_id = :id")
-    suspend fun getGherkinLinesByCriteriaId(id: Long): List<GherkinLine>
+    fun createUserStory(userStory: UserStory) {
+        userStoryQueries.insert(
+            id = userStory.id,
+            title = "US n° ${userStory.id}",
+            persona = userStory.persona,
+            wish = userStory.wish,
+            purpose = userStory.purpose,
+            kpi = userStory.kpi,
+            businessValue = userStory.businessValue,
+            solution = userStory.solution,
+            enablers = userStory.enablers,
+            assets = userStory.assets,
+            estimation = userStory.estimation,
+            smallEnough = userStory.smallEnough,
+            independent = userStory.independent,
+            estimable = userStory.estimable,
+            testable = userStory.testable,
+        )
+    }
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun createUserStory(userStory: UserStory): Long
+    fun deleteAllUserStories() {
+        userStoryQueries.selectAll()
+            .executeAsList()
+            .forEach { deleteUserStory(it.id) }
+    }
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun createCriteria(criteria: Criteria): Long
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun createGherkinLine(gherkinLine: GherkinLine): Long
-
-    @Transaction
-    @Query("DELETE FROM `user_story`")
-    suspend fun deleteAllUserStories()
+    fun deleteUserStory(id: Long) {
+        //TODO: delete criteria and gherkin lines
+        userStoryQueries.deleteById(id)
+    }
 }

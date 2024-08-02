@@ -8,13 +8,12 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.room)
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
+        @OptIn(ExperimentalKotlinGradlePluginApi::class) compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
@@ -22,12 +21,11 @@ kotlin {
     jvm("desktop")
 
     listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
+        iosX64(), iosArm64(), iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "App"
+            freeCompilerArgs += "-Xbinary=bundleId=com.github.mcgalanes.refiner"
             isStatic = true
         }
     }
@@ -41,6 +39,7 @@ kotlin {
 
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+            implementation(libs.sqldelight.android.driver)
         }
 
         commonMain.dependencies {
@@ -58,13 +57,25 @@ kotlin {
             implementation(libs.lifecycle.viewmodel)
             implementation(libs.navigation.compose)
 
-            implementation(libs.room.runtime)
-            implementation(libs.sqlite.bundled)
+            implementation(libs.sqldelight.coroutines)
         }
 
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+            implementation(libs.sqldelight.sqlite.driver)
+        }
+
+        nativeMain.dependencies {
+            implementation(libs.sqldelight.native.driver)
+        }
+    }
+
+    sqldelight {
+        databases {
+            create("RefinerDatabase") {
+                packageName = "com.github.mcgalanes.refiner.database"
+            }
         }
     }
 }
@@ -104,15 +115,6 @@ android {
     dependencies {
         debugImplementation(compose.uiTooling)
     }
-}
-
-room {
-    schemaDirectory("$projectDir/schemas")
-}
-
-dependencies {
-    add("kspAndroid", libs.room.compiler)
-    add("kspDesktop", libs.room.compiler)
 }
 
 compose.desktop {

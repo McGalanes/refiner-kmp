@@ -1,0 +1,18 @@
+CREATE TABLE Criteria (
+    id INTEGER PRIMARY KEY,
+    userStoryId INTEGER NOT NULL REFERENCES UserStory(id),
+    title TEXT NOT NULL
+);
+
+selectAllByUserStoryId:
+SELECT *
+FROM Criteria
+WHERE userStoryId = ?;
+
+insert:
+INSERT INTO Criteria (id, userStoryId, title)
+VALUES (?, ?, ?);
+
+deleteById:
+DELETE FROM Criteria
+WHERE id = ?;

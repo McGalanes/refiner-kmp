@@ -53,7 +53,7 @@ fun App(
             }
 
             items(userStories) { userStory ->
-                Text(text = userStory.userStory.title)
+                Text(text = userStory.title)
             }
         }
     }

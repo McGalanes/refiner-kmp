@@ -1,0 +1,34 @@
+CREATE TABLE UserStory(
+    id INTEGER PRIMARY KEY,
+    title TEXT NOT NULL,
+    persona TEXT NOT NULL,
+    wish TEXT NOT NULL,
+    purpose TEXT NOT NULL,
+    kpi TEXT NOT NULL,
+    businessValue INTEGER NOT NULL,
+    solution TEXT NOT NULL,
+    enablers TEXT NOT NULL,
+    assets TEXT NOT NULL,
+    estimation INTEGER NOT NULL,
+    smallEnough INTEGER NOT NULL,
+    independent INTEGER NOT NULL,
+    estimable INTEGER NOT NULL,
+    testable INTEGER NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM UserStory;
+
+selectById:
+SELECT *
+FROM UserStory
+WHERE id = ?;
+
+insert:
+INSERT INTO UserStory (id, title, persona, wish, purpose, kpi, businessValue, solution, enablers, assets, estimation, smallEnough, independent, estimable, testable)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteById:
+DELETE FROM UserStory
+WHERE id = ?;

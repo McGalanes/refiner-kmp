@@ -1,0 +1,19 @@
+CREATE TABLE GherkinLine (
+    id INTEGER PRIMARY KEY,
+    criteriaId INTEGER NOT NULL REFERENCES Criteria(id),
+    key TEXT NOT NULL,
+    value TEXT NOT NULL
+);
+
+selectAllByCriteriaId:
+SELECT *
+FROM GherkinLine
+WHERE criteriaId = ?;
+
+insert:
+INSERT INTO GherkinLine (id, criteriaId, key, value)
+VALUES (?, ?, ?, ?);
+
+deleteById:
+DELETE FROM GherkinLine
+WHERE id = ?;
