@@ -8,42 +8,49 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 
-class UserStoryDao(database: RefinerDatabase) {
-    private val userStoryQueries = database.userStoryQueries
-    private val criteriaQueries = database.criteriaQueries
-    private val gherkinLineQueries = database.gherkineLineQueries
+interface UserStoryDao {
+    fun getAllUserStories(): Flow<List<UserStory>>
+    fun createUserStory(userStory: UserStory)
+    fun deleteAllUserStories()
+    fun deleteUserStory(id: Long)
 
-    fun getAllUserStories(): Flow<List<UserStory>> =
-        userStoryQueries.selectAll().asFlow().mapToList(Dispatchers.IO)
+    class Default(database: RefinerDatabase) : UserStoryDao {
+        private val userStoryQueries = database.userStoryQueries
+        private val criteriaQueries = database.criteriaQueries
+        private val gherkinLineQueries = database.gherkineLineQueries
 
-    fun createUserStory(userStory: UserStory) {
-        userStoryQueries.insert(
-            id = userStory.id,
-            title = "US n° ${userStory.id}",
-            persona = userStory.persona,
-            wish = userStory.wish,
-            purpose = userStory.purpose,
-            kpi = userStory.kpi,
-            businessValue = userStory.businessValue,
-            solution = userStory.solution,
-            enablers = userStory.enablers,
-            assets = userStory.assets,
-            estimation = userStory.estimation,
-            smallEnough = userStory.smallEnough,
-            independent = userStory.independent,
-            estimable = userStory.estimable,
-            testable = userStory.testable,
-        )
-    }
+        override fun getAllUserStories(): Flow<List<UserStory>> =
+            userStoryQueries.selectAll().asFlow().mapToList(Dispatchers.IO)
 
-    fun deleteAllUserStories() {
-        userStoryQueries.selectAll()
-            .executeAsList()
-            .forEach { deleteUserStory(it.id) }
-    }
+        override fun createUserStory(userStory: UserStory) {
+            userStoryQueries.insert(
+                id = userStory.id,
+                title = "US n° ${userStory.id}",
+                persona = userStory.persona,
+                wish = userStory.wish,
+                purpose = userStory.purpose,
+                kpi = userStory.kpi,
+                businessValue = userStory.businessValue,
+                solution = userStory.solution,
+                enablers = userStory.enablers,
+                assets = userStory.assets,
+                estimation = userStory.estimation,
+                smallEnough = userStory.smallEnough,
+                independent = userStory.independent,
+                estimable = userStory.estimable,
+                testable = userStory.testable,
+            )
+        }
 
-    fun deleteUserStory(id: Long) {
-        //TODO: delete criteria and gherkin lines
-        userStoryQueries.deleteById(id)
+        override fun deleteAllUserStories() {
+            userStoryQueries.selectAll()
+                .executeAsList()
+                .forEach { deleteUserStory(it.id) }
+        }
+
+        override fun deleteUserStory(id: Long) {
+            //TODO: delete criteria and gherkin lines
+            userStoryQueries.deleteById(id)
+        }
     }
 }
