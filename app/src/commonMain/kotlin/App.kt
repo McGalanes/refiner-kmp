@@ -7,15 +7,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.github.mcgalanes.refiner.core.design.token.RefinerTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -24,36 +26,44 @@ import org.koin.compose.viewmodel.koinViewModel
 fun App(
     viewModel: AppViewModel = koinViewModel(),
 ) {
-    MaterialTheme {
-
+    RefinerTheme(darkTheme = false) {
         val userStories by viewModel.userStories.collectAsStateWithLifecycle()
 
-        LazyColumn(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-            item {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                ) {
-                    Button(
-                        onClick = {
-                            viewModel.onClearButtonClicked()
-                        }
-                    ) { Text("Clear") }
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                    ) {
+                        Button(
+                            onClick = {
+                                viewModel.onClearButtonClicked()
+                            }
+                        ) { Text("Clear") }
 
-                    Spacer(Modifier.width(16.dp))
+                        Spacer(Modifier.width(16.dp))
 
-                    Button(
-                        onClick = {
-                            viewModel.onAddButtonClicked()
-                        }
-                    ) { Text("Add") }
+                        Button(
+                            onClick = {
+                                viewModel.onAddButtonClicked()
+                            },
+                        ) { Text("Add") }
+                    }
+
+                    Text(text = "${LocalContentColor.current.value}")
+
+                    Spacer(Modifier.height(24.dp))
                 }
 
-                Spacer(Modifier.height(24.dp))
-            }
-
-            items(userStories) { userStory ->
-                Text(text = userStory.title)
+                items(userStories) { userStory ->
+                    Text(text = userStory.title)
+                }
             }
         }
     }
