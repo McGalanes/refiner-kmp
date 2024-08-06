@@ -1,4 +1,4 @@
-package com.github.mcgalanes.refiner.core.design.token
+package com.github.mcgalanes.refiner.core.design.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -8,10 +8,8 @@ actual fun RefinerTheme(
     darkTheme: Boolean,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
-
     MaterialTheme(
-        colorScheme = colorScheme,
-        content = content,
+        colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme,
+        content = content
     )
 }

@@ -1,4 +1,4 @@
-package com.github.mcgalanes.refiner.core.design.token
+package com.github.mcgalanes.refiner.core.design.theme
 
 import androidx.compose.ui.graphics.Color
 

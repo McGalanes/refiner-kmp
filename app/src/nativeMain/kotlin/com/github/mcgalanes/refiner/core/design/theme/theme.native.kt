@@ -1,4 +1,4 @@
-package com.github.mcgalanes.refiner.core.design.token
+package com.github.mcgalanes.refiner.core.design.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
