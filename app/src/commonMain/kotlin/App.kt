@@ -1,14 +1,17 @@
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
-import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,32 +40,54 @@ fun App(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 item {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center,
+                    Surface(
+                        modifier = Modifier.padding(16.dp),
+                        shadowElevation = 4.dp,
+                        shape = MaterialTheme.shapes.medium,
                     ) {
-                        Button(
-                            onClick = {
-                                viewModel.onClearButtonClicked()
+                        Column(
+                            modifier = Modifier.padding(16.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Row(
+                                horizontalArrangement = Arrangement.Center,
+                            ) {
+                                Button(
+                                    onClick = viewModel::onClearButtonClicked
+                                ) { Text("Clear") }
+
+                                Spacer(Modifier.width(16.dp))
+
+                                Button(
+                                    onClick = viewModel::onAddButtonClicked,
+                                ) { Text("Add") }
                             }
-                        ) { Text("Clear") }
 
-                        Spacer(Modifier.width(16.dp))
+                            Spacer(Modifier.width(16.dp))
 
-                        Button(
-                            onClick = {
-                                viewModel.onAddButtonClicked()
-                            },
-                        ) { Text("Add") }
+                            Text(text = "${getPlatform()}")
+                        }
                     }
-
-                    Text(text = "${LocalContentColor.current.value}")
 
                     Spacer(Modifier.height(24.dp))
                 }
 
-                items(userStories) { userStory ->
-                    Text(text = userStory.title)
+                itemsIndexed(userStories) { index, userStory ->
+                    Surface(
+                        shadowElevation = 4.dp,
+                        shape = MaterialTheme.shapes.large,
+                    ) {
+                        Box(
+                            modifier = Modifier.size(200.dp, 48.dp)
+                        ) {
+                            Text(
+                                modifier = Modifier.align(Alignment.Center),
+                                text = userStory.title
+                            )
+                        }
+                    }
+
+                    Spacer(Modifier.height(8.dp))
                 }
             }
         }
