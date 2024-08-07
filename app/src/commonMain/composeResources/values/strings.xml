@@ -1,0 +1,9 @@
+<resources>
+    <string name="userstory_create_step_need">Need</string>
+    <string name="userstory_create_step_kpi">KPI</string>
+    <string name="userstory_create_step_business_value">Business value</string>
+    <string name="userstory_create_step_solution">Solution</string>
+    <string name="userstory_create_step_enablers">Enablers</string>
+    <string name="userstory_create_step_assets">Assets</string>
+    <string name="userstory_create_step_uat">UAT</string>
+</resources>

@@ -1,6 +1,6 @@
-package com.github.mcgalanes.refiner.domain.entity
+package com.github.mcgalanes.refiner.domain.model
 
-data class UserStoryEntity(
+data class UserStory(
     val id: Long,
     val title: String,
     val persona: String,
@@ -16,19 +16,19 @@ data class UserStoryEntity(
     val independent: Boolean,
     val estimable: Boolean,
     val testable: Boolean,
-    val criterias: List<CriteriaEntity>,
+    val criterias: List<Criteria>,
 ) {
-    data class CriteriaEntity(
+    data class Criteria(
         val id: Long,
         val title: String,
-        val gherkinLines: List<GherkinLineEntity>,
+        val gherkinLines: List<GherkinLine>,
     ) {
-        data class GherkinLineEntity(
+        data class GherkinLine(
             val id: Long,
-            val key: GherkinKeyEntity,
+            val key: GherkinKey,
             val value: String,
         ) {
-            enum class GherkinKeyEntity {
+            enum class GherkinKey {
                 Given,
                 When,
                 Then,

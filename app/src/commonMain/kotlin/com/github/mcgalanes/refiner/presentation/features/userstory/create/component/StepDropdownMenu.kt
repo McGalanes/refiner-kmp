@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.refiner.core.design.component.spacer.HorizontalSpacer
 import com.github.mcgalanes.refiner.presentation.features.userstory.create.model.Step
+import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
@@ -43,7 +44,10 @@ internal fun StepDropdownMenu(
     ) {
         Surface(
             modifier = Modifier
-                .defaultMinSize(minHeight = 48.dp, minWidth = 152.dp)
+                .defaultMinSize(
+                    minHeight = 48.dp,
+                    minWidth = 152.dp
+                )
                 .menuAnchor(MenuAnchorType.PrimaryNotEditable),
             shadowElevation = 2.dp,
             shape = MaterialTheme.shapes.medium,
@@ -55,7 +59,7 @@ internal fun StepDropdownMenu(
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
-                    text = selectedStep.title,
+                    text = stringResource(selectedStep.title),
                     style = MaterialTheme.typography.titleMedium,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
@@ -76,7 +80,8 @@ internal fun StepDropdownMenu(
                 DropdownMenuItem(
                     text = {
                         Text(
-                            text = step.title, style = MaterialTheme.typography.bodyLarge
+                            text = stringResource(step.title),
+                            style = MaterialTheme.typography.bodyLarge
                         )
                     },
                     onClick = {
