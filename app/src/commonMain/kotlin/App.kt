@@ -1,4 +1,7 @@
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.github.mcgalanes.refiner.core.design.theme.RefinerTheme
@@ -12,6 +15,10 @@ fun App(
     viewModel: AppViewModel = koinViewModel(),
 ) {
     RefinerTheme(darkTheme = false) {
-        CreateUserStoryScreen(Modifier.fillMaxSize())
+        CreateUserStoryScreen(
+            Modifier
+                .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.safeDrawing)
+        )
     }
 }
