@@ -1,4 +1,4 @@
-package com.github.mcgalanes.refiner.presentation.features.userstory.create.component
+package com.github.mcgalanes.refiner.presentation.feature.userstory.create.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
@@ -26,7 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.refiner.core.design.component.spacer.HorizontalSpacer
 import com.github.mcgalanes.refiner.core.design.component.spacer.VerticalSpacer
-import com.github.mcgalanes.refiner.presentation.features.userstory.create.model.Tips
+import com.github.mcgalanes.refiner.presentation.feature.userstory.create.model.Tips
 import org.jetbrains.compose.resources.stringResource
 
 

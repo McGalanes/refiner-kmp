@@ -1,10 +1,9 @@
-package com.github.mcgalanes.refiner.presentation.features.userstory.create.component
+package com.github.mcgalanes.refiner.presentation.feature.userstory.create.component
 
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 

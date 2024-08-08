@@ -1,4 +1,4 @@
-package com.github.mcgalanes.refiner.presentation.features.userstory.create.component
+package com.github.mcgalanes.refiner.presentation.feature.userstory.create.component
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -8,25 +8,32 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.github.mcgalanes.refiner.domain.model.FormStep
 
 
 @Composable
 internal fun CreateUserStoryScaffold(
+    selectedStep: FormStep,
     modifier: Modifier = Modifier,
     onUpNavigationClick: () -> Unit,
-    onNextClick: () -> Unit,
-    onBackClick: () -> Unit,
+    onSelectStep: (FormStep) -> Unit,
+    onNextStepClick: () -> Unit,
+    onPreviousStepClick: () -> Unit,
     content: @Composable () -> Unit,
 ) {
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopBar(onUpNavigationClick = onUpNavigationClick)
+            TopBar(
+                selectedStep = selectedStep,
+                onSelectStep = onSelectStep,
+                onUpNavigationClick = onUpNavigationClick
+            )
         },
         bottomBar = {
             BottomBar(
-                onNextClick = onNextClick,
-                onBackClick = onBackClick,
+                onNextClick = onNextStepClick,
+                onBackClick = onPreviousStepClick,
             )
         },
     ) { paddingValues ->

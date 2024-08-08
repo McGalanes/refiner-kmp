@@ -1,4 +1,4 @@
-package com.github.mcgalanes.refiner.presentation.features.userstory.create.component.step
+package com.github.mcgalanes.refiner.presentation.feature.userstory.create.component.step
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
@@ -6,8 +6,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.refiner.core.design.component.spacer.VerticalSpacer
-import com.github.mcgalanes.refiner.presentation.features.userstory.create.component.TipsBox
-import com.github.mcgalanes.refiner.presentation.features.userstory.create.model.Tips
+import com.github.mcgalanes.refiner.presentation.feature.userstory.create.component.TipsBox
+import com.github.mcgalanes.refiner.presentation.feature.userstory.create.model.Tips
 import org.jetbrains.compose.resources.stringResource
 import refiner.app.generated.resources.Res
 import refiner.app.generated.resources.userstory_create_tips_box_title

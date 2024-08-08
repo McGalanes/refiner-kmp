@@ -1,4 +1,4 @@
-package com.github.mcgalanes.refiner.presentation.features.userstory.create.model
+package com.github.mcgalanes.refiner.presentation.feature.userstory.create.model
 
 import org.jetbrains.compose.resources.StringResource
 

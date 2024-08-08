@@ -1,4 +1,4 @@
-package com.github.mcgalanes.refiner.presentation.features.userstory.create.component
+package com.github.mcgalanes.refiner.presentation.feature.userstory.create.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.hapticfeedback.HapticFeedback
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -24,6 +27,8 @@ internal fun BottomBar(
     onNextClick: () -> Unit,
     onBackClick: () -> Unit,
 ) {
+    val haptic = LocalHapticFeedback.current
+
     Surface(modifier) {
         Column {
             LinearProgressIndicator(
@@ -42,14 +47,20 @@ internal fun BottomBar(
             ) {
                 TextButton(
                     modifier = Modifier.height(48.dp),
-                    onClick = onBackClick,
+                    onClick = {
+                        onBackClick()
+                        haptic.perform()
+                    },
                 ) {
                     Text("Back")
                 }
 
                 Button(
                     modifier = Modifier.height(48.dp),
-                    onClick = onNextClick,
+                    onClick = {
+                        onNextClick()
+                        haptic.perform()
+                    },
                     shape = MaterialTheme.shapes.small,
                 ) {
                     Text("Next")
@@ -58,3 +69,8 @@ internal fun BottomBar(
         }
     }
 }
+
+private fun HapticFeedback.perform() {
+    performHapticFeedback(HapticFeedbackType.LongPress)
+}
+

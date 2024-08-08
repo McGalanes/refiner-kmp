@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.github.mcgalanes.refiner.presentation.features.userstory.create.component
+package com.github.mcgalanes.refiner.presentation.feature.userstory.create.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -24,16 +24,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.refiner.core.design.component.spacer.HorizontalSpacer
-import com.github.mcgalanes.refiner.presentation.features.userstory.create.model.Step
+import com.github.mcgalanes.refiner.domain.model.FormStep
+import com.github.mcgalanes.refiner.presentation.feature.userstory.create.model.getTitle
 import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
 internal fun StepDropdownMenu(
-    steps: List<Step>,
-    selectedStep: Step,
+    steps: List<FormStep>,
+    selectedStep: FormStep,
     modifier: Modifier = Modifier,
-    onSelect: (Step) -> Unit,
+    onSelect: (FormStep) -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -59,7 +60,7 @@ internal fun StepDropdownMenu(
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
-                    text = stringResource(selectedStep.title),
+                    text = stringResource(selectedStep.getTitle()),
                     style = MaterialTheme.typography.titleMedium,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
@@ -80,7 +81,7 @@ internal fun StepDropdownMenu(
                 DropdownMenuItem(
                     text = {
                         Text(
-                            text = stringResource(step.title),
+                            text = stringResource(step.getTitle()),
                             style = MaterialTheme.typography.bodyLarge
                         )
                     },

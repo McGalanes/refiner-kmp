@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.github.mcgalanes.refiner.presentation.features.userstory.create.component
+package com.github.mcgalanes.refiner.presentation.feature.userstory.create.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -15,23 +15,19 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.github.mcgalanes.refiner.presentation.features.userstory.create.model.Step
+import com.github.mcgalanes.refiner.domain.model.FormStep
 
 
 @Composable
 internal fun TopBar(
+    selectedStep: FormStep,
+    onSelectStep: (FormStep) -> Unit,
     modifier: Modifier = Modifier,
     onUpNavigationClick: () -> Unit,
 ) {
-    var selectedStep by remember { mutableStateOf(Step.entries[0]) }
-
     Surface(
         modifier = modifier.fillMaxWidth()
             .padding(horizontal = 4.dp)
@@ -49,12 +45,11 @@ internal fun TopBar(
                 modifier = Modifier.weight(1f)
             ) {
                 StepDropdownMenu(
-                    modifier = Modifier
-                    .padding(4.dp)
-                    .align(Alignment.Center),
-                steps = Step.entries,
-                selectedStep = selectedStep,
-                onSelect = { selectedStep = it },
+                    modifier = Modifier.padding(4.dp)
+                        .align(Alignment.Center),
+                    steps = FormStep.entries,
+                    selectedStep = selectedStep,
+                    onSelect = onSelectStep,
                 )
             }
 
