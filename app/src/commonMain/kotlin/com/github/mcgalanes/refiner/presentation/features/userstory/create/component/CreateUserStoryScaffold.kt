@@ -1,6 +1,6 @@
 package com.github.mcgalanes.refiner.presentation.features.userstory.create.component
 
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
@@ -32,11 +32,14 @@ internal fun CreateUserStoryScaffold(
     ) { paddingValues ->
         Surface(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(paddingValues)
                 .padding(top = 16.dp),
             shadowElevation = 4.dp,
-            shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
+            shape = RoundedCornerShape(
+                topStart = 32.dp,
+                topEnd = 32.dp
+            ),
         ) {
             content()
         }

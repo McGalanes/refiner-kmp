@@ -1,5 +1,6 @@
 package com.github.mcgalanes.refiner.presentation.features.userstory.create
 
+import NeedForm
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -11,11 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.refiner.core.design.component.spacer.VerticalSpacer
 import com.github.mcgalanes.refiner.presentation.features.userstory.create.component.CreateUserStoryScaffold
+import org.jetbrains.compose.resources.stringResource
+import refiner.app.generated.resources.Res
+import refiner.app.generated.resources.userstory_create_step_need_title
 
 
 @Composable
 fun CreateUserStoryScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     CreateUserStoryScaffold(
         modifier = modifier,
@@ -31,26 +35,22 @@ fun CreateUserStoryScreen(
             VerticalSpacer(24.dp)
 
             Text(
-                text = "What's your need?",
+                text = stringResource(Res.string.userstory_create_step_need_title),
                 style = MaterialTheme.typography.headlineSmall,
             )
 
-            VerticalSpacer(8.dp)
+            VerticalSpacer(24.dp)
 
-            Text(
-                text = "You can change it anytime.",
-                style = MaterialTheme.typography.bodyMedium,
+            NeedForm(
+                persona = "developer",
+                wish = "a nice user story",
+                purpose = "to understand the user's needs",
+                onPersonaChange = {},
+                onWishChange = {},
+                onPurposeChange = {},
             )
 
-            VerticalSpacer(16.dp)
-
-            (0..200).forEach { i ->
-                Text(
-                    modifier = Modifier.padding(8.dp),
-                    text = "This is a criteria #$i",
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-            }
+            VerticalSpacer(24.dp)
         }
     }
 }
