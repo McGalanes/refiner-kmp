@@ -7,8 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.refiner.core.design.component.spacer.VerticalSpacer
 import com.github.mcgalanes.refiner.presentation.features.userstory.create.component.TipsBox
-import com.github.mcgalanes.refiner.presentation.features.userstory.create.component.TipsDescription
-import com.github.mcgalanes.refiner.presentation.features.userstory.create.component.TipsTitle
+import com.github.mcgalanes.refiner.presentation.features.userstory.create.model.Tips
 import org.jetbrains.compose.resources.stringResource
 import refiner.app.generated.resources.Res
 import refiner.app.generated.resources.userstory_create_tips_box_title
@@ -16,7 +15,7 @@ import refiner.app.generated.resources.userstory_create_tips_box_title
 
 @Composable
 internal fun StepForm(
-    tips: Map<TipsTitle, TipsDescription>,
+    tips: List<Tips>,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {

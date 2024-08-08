@@ -5,9 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.refiner.presentation.features.userstory.create.component.Input
-import com.github.mcgalanes.refiner.presentation.features.userstory.create.component.TipsDescription
-import com.github.mcgalanes.refiner.presentation.features.userstory.create.component.TipsTitle
 import com.github.mcgalanes.refiner.presentation.features.userstory.create.component.step.StepForm
+import com.github.mcgalanes.refiner.presentation.features.userstory.create.model.Tips
 import org.jetbrains.compose.resources.stringResource
 import refiner.app.generated.resources.Res
 import refiner.app.generated.resources.userstory_create_step_need_persona_input_label
@@ -24,7 +23,7 @@ internal fun NeedForm(
     wish: String,
     purpose: String,
     modifier: Modifier = Modifier,
-    tips: Map<TipsTitle, TipsDescription> = emptyMap(),
+    tips: List<Tips> = emptyList(),
     onPersonaChange: (String) -> Unit,
     onWishChange: (String) -> Unit,
     onPurposeChange: (String) -> Unit,

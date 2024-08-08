@@ -23,7 +23,6 @@ ksp = "2.0.0-1.0.24"
 sqldelight = "2.0.2"
 sqlite = "2.5.0-alpha05"
 
-
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }

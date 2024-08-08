@@ -1,7 +1,6 @@
 <resources>
     <!-- feature: user story create -->
     <string name="userstory_create_tips_box_title">Need some help?</string>
-
     <string name="userstory_create_step_need_title">What is the need?</string>
     <string name="userstory_create_step_need_persona_input_label">As a</string>
     <string name="userstory_create_step_need_persona_input_placeholder">Who?</string>
@@ -16,5 +15,10 @@
     <string name="userstory_create_step_enablers">Enablers</string>
     <string name="userstory_create_step_assets">Assets</string>
     <string name="userstory_create_step_uat">UAT</string>
-
+    <string name="userstory_create_step_need_tips_1_title">Progression</string>
+    <string name="userstory_create_step_need_tips_1_description">The PO explains the need.</string>
+    <string name="userstory_create_step_need_tips_2_title">Objectives</string>
+    <string name="userstory_create_step_need_tips_2_description">\u2022 Define a clear need [what] [who].\n\u2022 Give meaning to this need [why].</string>
+    <string name="userstory_create_step_need_tips_3_title">Advice</string>
+    <string name="userstory_create_step_need_tips_3_description">The team writes the smallest possible functional need.</string>
 </resources>

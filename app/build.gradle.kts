@@ -21,7 +21,9 @@ kotlin {
     jvm("desktop")
 
     listOf(
-        iosX64(), iosArm64(), iosSimulatorArm64()
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "App"
@@ -71,6 +73,10 @@ kotlin {
         nativeMain.dependencies {
             implementation(libs.sqldelight.native.driver)
         }
+
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+        }
     }
 
     sqldelight {
@@ -84,7 +90,8 @@ kotlin {
 
 android {
     namespace = "com.github.mcgalanes.refiner"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = libs.versions.android.compileSdk.get()
+        .toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
@@ -92,8 +99,10 @@ android {
 
     defaultConfig {
         applicationId = "com.github.mcgalanes.refiner"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get()
+            .toInt()
+        targetSdk = libs.versions.android.targetSdk.get()
+            .toInt()
         versionCode = 1
         versionName = "1.0"
     }
@@ -124,7 +133,11 @@ compose.desktop {
         mainClass = "MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(
+                TargetFormat.Dmg,
+                TargetFormat.Msi,
+                TargetFormat.Deb
+            )
             packageName = "com.github.mcgalanes.refiner"
             packageVersion = "1.0.0"
         }

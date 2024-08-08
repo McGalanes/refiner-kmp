@@ -26,14 +26,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.refiner.core.design.component.spacer.HorizontalSpacer
 import com.github.mcgalanes.refiner.core.design.component.spacer.VerticalSpacer
+import com.github.mcgalanes.refiner.presentation.features.userstory.create.model.Tips
+import org.jetbrains.compose.resources.stringResource
 
-typealias TipsTitle = String
-typealias TipsDescription = String
 
 @Composable
 internal fun TipsBox(
     title: String,
-    tips: Map<TipsTitle, TipsDescription>,
+    tips: List<Tips>,
     modifier: Modifier = Modifier,
 ) {
     var expanded by remember { mutableStateOf(false) }
@@ -82,11 +82,8 @@ internal fun TipsBox(
                 Column {
                     VerticalSpacer(24.dp)
 
-                    tips.onEachIndexed { index, (title, description) ->
-                        TipsLine(
-                            title = title,
-                            description = description,
-                        )
+                    tips.onEachIndexed { index, it ->
+                        TipsLine(it)
 
                         if (index < tips.size) VerticalSpacer(16.dp)
                     }
@@ -98,13 +95,12 @@ internal fun TipsBox(
 
 @Composable
 private fun TipsLine(
-    title: String,
-    description: String,
+    tips: Tips,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
         Text(
-            text = title,
+            text = stringResource(tips.title),
             style = MaterialTheme.typography.titleSmall,
         )
 
@@ -112,7 +108,7 @@ private fun TipsLine(
 
         Text(
             modifier = Modifier.padding(start = 8.dp),
-            text = description,
+            text = stringResource(tips.description),
             style = MaterialTheme.typography.bodyMedium,
         )
     }
