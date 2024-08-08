@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -16,9 +14,6 @@ import com.github.mcgalanes.refiner.core.design.component.spacer.VerticalSpacer
 import com.github.mcgalanes.refiner.domain.model.FormStep
 import com.github.mcgalanes.refiner.presentation.feature.userstory.create.component.CreateUserStoryScaffold
 import com.github.mcgalanes.refiner.presentation.feature.userstory.create.state.UiState
-import org.jetbrains.compose.resources.stringResource
-import refiner.app.generated.resources.Res
-import refiner.app.generated.resources.userstory_create_step_need_title
 
 
 @Composable
@@ -65,13 +60,6 @@ private fun CreateUserStoryScreen(
             modifier = Modifier.verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp)
         ) {
-            VerticalSpacer(24.dp)
-
-            Text(
-                text = stringResource(Res.string.userstory_create_step_need_title),
-                style = MaterialTheme.typography.headlineSmall,
-            )
-
             VerticalSpacer(24.dp)
 
             when (state.selectedStep) {

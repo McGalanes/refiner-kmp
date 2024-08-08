@@ -19,6 +19,7 @@ import refiner.app.generated.resources.userstory_create_step_need_tips_2_descrip
 import refiner.app.generated.resources.userstory_create_step_need_tips_2_title
 import refiner.app.generated.resources.userstory_create_step_need_tips_3_description
 import refiner.app.generated.resources.userstory_create_step_need_tips_3_title
+import refiner.app.generated.resources.userstory_create_step_need_title
 import refiner.app.generated.resources.userstory_create_step_need_wish_input_label
 import refiner.app.generated.resources.userstory_create_step_need_wish_input_placeholder
 
@@ -35,6 +36,7 @@ internal fun NeedForm(
 ) {
     StepForm(
         modifier = modifier,
+        title = stringResource(Res.string.userstory_create_step_need_title),
         tips = listOf(
             Tips(
                 title = Res.string.userstory_create_step_need_tips_1_title,
