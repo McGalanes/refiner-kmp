@@ -32,6 +32,7 @@ internal fun CreateUserStoryScaffold(
         },
         bottomBar = {
             BottomBar(
+                selectedStep = selectedStep,
                 onNextClick = onNextStepClick,
                 onBackClick = onPreviousStepClick,
             )
