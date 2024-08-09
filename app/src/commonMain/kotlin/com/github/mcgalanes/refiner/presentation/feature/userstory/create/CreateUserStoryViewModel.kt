@@ -28,6 +28,10 @@ class CreateUserStoryViewModel(
         _uiState.update { it.copy(purpose = purpose) }
     }
 
+    fun onKpiChange(kpi: String) {
+        _uiState.update { it.copy(kpi = kpi) }
+    }
+
     fun onSelectStep(step: FormStep) {
         _uiState.update { it.copy(selectedStep = step) }
     }

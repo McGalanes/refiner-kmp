@@ -55,6 +55,22 @@ class CreateUserStoryViewModelTest {
     }
 
     @Test
+    fun `on kpi change, should update it`() {
+        // GIVEN
+        val viewModel = viewModel()
+        val input = "kpi"
+
+        // WHEN
+        viewModel.onKpiChange(input)
+
+        // THEN
+        assertEquals(
+            input,
+            viewModel.uiState.value.kpi,
+        )
+    }
+
+    @Test
     fun `on select step, should select it`() {
         // GIVEN
         val viewModel = viewModel()

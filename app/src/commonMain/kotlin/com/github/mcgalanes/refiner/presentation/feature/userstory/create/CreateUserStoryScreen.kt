@@ -1,17 +1,13 @@
 package com.github.mcgalanes.refiner.presentation.feature.userstory.create
 
+import KpiForm
 import NeedForm
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -37,6 +33,7 @@ internal fun CreateUserStoryScreen(
         onPersonaChange = viewModel::onPersonaChange,
         onWishChange = viewModel::onWishChange,
         onPurposeChange = viewModel::onPurposeChange,
+        onKpiChange = viewModel::onKpiChange,
         onNextStepClick = viewModel::onNextStepClick,
         onPreviousStepClick = viewModel::onPreviousStepClick,
         modifier = modifier,
@@ -51,6 +48,7 @@ private fun CreateUserStoryScreen(
     onPersonaChange: (String) -> Unit,
     onWishChange: (String) -> Unit,
     onPurposeChange: (String) -> Unit,
+    onKpiChange: (String) -> Unit,
     onNextStepClick: () -> Unit,
     onPreviousStepClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -84,7 +82,14 @@ private fun CreateUserStoryScreen(
                             onPurposeChange = onPurposeChange,
                         )
                     }
-                    
+
+                    FormStep.Kpi -> {
+                        KpiForm(
+                            kpi = state.kpi,
+                            onKpiChange = onKpiChange,
+                        )
+                    }
+
                     else -> {}
                 }
             }

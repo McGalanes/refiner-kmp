@@ -1,5 +1,12 @@
 <resources>
     <!-- feature: user story create -->
+    <string name="userstory_create_step_kpi">KPI</string>
+    <string name="userstory_create_step_business_value">Business value</string>
+    <string name="userstory_create_step_solution">Solution</string>
+    <string name="userstory_create_step_enablers">Enablers</string>
+    <string name="userstory_create_step_assets">Assets</string>
+    <string name="userstory_create_step_uat">UAT</string>
+
     <string name="userstory_create_tips_box_title">Need some help?</string>
     <string name="userstory_create_step_need_title">What is the need?</string>
     <string name="userstory_create_step_need_persona_input_label">As a</string>
@@ -9,16 +16,16 @@
     <string name="userstory_create_step_need_purpose_input_label">So that</string>
     <string name="userstory_create_step_need_purpose_input_placeholder">Why?</string>
     <string name="userstory_create_step_need">Need</string>
-    <string name="userstory_create_step_kpi">KPI</string>
-    <string name="userstory_create_step_business_value">Business value</string>
-    <string name="userstory_create_step_solution">Solution</string>
-    <string name="userstory_create_step_enablers">Enablers</string>
-    <string name="userstory_create_step_assets">Assets</string>
-    <string name="userstory_create_step_uat">UAT</string>
     <string name="userstory_create_step_need_tips_1_title">Progression</string>
     <string name="userstory_create_step_need_tips_1_description">The PO explains the need.</string>
     <string name="userstory_create_step_need_tips_2_title">Objectives</string>
     <string name="userstory_create_step_need_tips_2_description">\u2022 Define a clear need [what] [who].\n\u2022 Give meaning to this need [why].</string>
     <string name="userstory_create_step_need_tips_3_title">Advice</string>
     <string name="userstory_create_step_need_tips_3_description">The team writes the smallest possible functional need.</string>
+
+    <string name="userstory_create_step_kpi_title">Success KPI</string>
+    <string name="userstory_create_step_kpi_subtitle">We were right to implement this feature if\u2026</string>
+    <string name="userstory_create_step_kpi_tips_1_title">Objective</string>
+    <string name="userstory_create_step_kpi_tips_1_description">Justify the business utility of the feature.</string>
+    <string name="userstory_create_step_kpi_input_label">KPI</string>
 </resources>

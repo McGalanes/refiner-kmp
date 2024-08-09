@@ -12,7 +12,6 @@ import com.github.mcgalanes.refiner.presentation.feature.userstory.create.compon
 import com.github.mcgalanes.refiner.presentation.feature.userstory.create.model.Tips
 import org.jetbrains.compose.resources.stringResource
 import refiner.app.generated.resources.Res
-import refiner.app.generated.resources.userstory_create_step_need_title
 import refiner.app.generated.resources.userstory_create_tips_box_title
 
 
@@ -21,6 +20,7 @@ internal fun StepForm(
     title: String,
     tips: List<Tips>,
     modifier: Modifier = Modifier,
+    subtitle: String? = null,
     content: @Composable () -> Unit,
 ) {
     Column(
@@ -30,6 +30,13 @@ internal fun StepForm(
             text = title,
             style = MaterialTheme.typography.headlineSmall,
         )
+
+        subtitle?.let {
+            Text(
+                text = it,
+                style = MaterialTheme.typography.bodyLarge,
+            )
+        }
 
         VerticalSpacer(24.dp)
 
