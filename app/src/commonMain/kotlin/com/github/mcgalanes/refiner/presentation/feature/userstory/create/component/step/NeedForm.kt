@@ -60,6 +60,7 @@ internal fun NeedForm(
                 modifier = Modifier.fillMaxWidth(),
                 value = persona,
                 onValueChange = onPersonaChange,
+                singleLine = false,
                 placeholder = stringResource(Res.string.userstory_create_step_need_persona_input_placeholder),
                 label = stringResource(Res.string.userstory_create_step_need_persona_input_label),
             )
@@ -68,6 +69,7 @@ internal fun NeedForm(
                 modifier = Modifier.fillMaxWidth(),
                 value = wish,
                 onValueChange = onWishChange,
+                singleLine = false,
                 placeholder = stringResource(Res.string.userstory_create_step_need_wish_input_placeholder),
                 label = stringResource(Res.string.userstory_create_step_need_wish_input_label),
             )
@@ -76,6 +78,7 @@ internal fun NeedForm(
                 modifier = Modifier.fillMaxWidth(),
                 value = purpose,
                 onValueChange = onPurposeChange,
+                singleLine = false,
                 placeholder = stringResource(Res.string.userstory_create_step_need_purpose_input_placeholder),
                 label = stringResource(Res.string.userstory_create_step_need_purpose_input_label),
             )

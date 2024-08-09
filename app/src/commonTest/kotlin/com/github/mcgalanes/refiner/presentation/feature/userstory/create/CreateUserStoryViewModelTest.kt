@@ -71,6 +71,54 @@ class CreateUserStoryViewModelTest {
     }
 
     @Test
+    fun `on business value change, should update it`() {
+        // GIVEN
+        val viewModel = viewModel()
+        val input = "75"
+
+        // WHEN
+        viewModel.onBusinessValueChange(input)
+
+        // THEN
+        assertEquals(
+            input.toInt(),
+            viewModel.uiState.value.businessValue,
+        )
+    }
+
+    @Test
+    fun `on business value change, should set it to null if not an integer`() {
+        // GIVEN
+        val viewModel = viewModel()
+        val input = "hundred"
+
+        // WHEN
+        viewModel.onBusinessValueChange(input)
+
+        // THEN
+        assertEquals(
+            null,
+            viewModel.uiState.value.businessValue,
+        )
+    }
+
+    @Test
+    fun `on business value change, should set to 100 if greater`() {
+        // GIVEN
+        val viewModel = viewModel()
+        val input = "101"
+
+        // WHEN
+        viewModel.onBusinessValueChange(input)
+
+        // THEN
+        assertEquals(
+            100,
+            viewModel.uiState.value.businessValue,
+        )
+    }
+
+    @Test
     fun `on select step, should select it`() {
         // GIVEN
         val viewModel = viewModel()

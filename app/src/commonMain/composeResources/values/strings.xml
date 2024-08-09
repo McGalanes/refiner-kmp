@@ -28,4 +28,9 @@
     <string name="userstory_create_step_kpi_tips_1_title">Objective</string>
     <string name="userstory_create_step_kpi_tips_1_description">Justify the business utility of the feature.</string>
     <string name="userstory_create_step_kpi_input_label">KPI</string>
+
+    <string name="userstory_create_step_business_value_title">Business value</string>
+    <string name="userstory_create_step_business_value_tips_1_title">Objective</string>
+    <string name="userstory_create_step_business_value_tips_1_description">Business value helps prioritize the User Stories to be implemented.\nIt also helps identify which features bring a lot of value to our users.</string>
+    <string name="userstory_create_step_business_value_input_label">Business value</string>
 </resources>
