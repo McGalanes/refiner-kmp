@@ -28,17 +28,17 @@ class CreateUserStoryViewModel(
         _uiState.update { it.copy(purpose = purpose) }
     }
 
-    fun onSelectStep(step: FormStep) { //TODO: TEST
+    fun onSelectStep(step: FormStep) {
         _uiState.update { it.copy(selectedStep = step) }
     }
 
-    fun onNextStepClick() { //TODO: TEST
+    fun onNextStepClick() {
         val currentStep = _uiState.value.selectedStep
         val newStep = getNextFormStep(currentStep) ?: return
         _uiState.update { it.copy(selectedStep = newStep) }
     }
 
-    fun onPreviousStepClick() { //TODO: TEST
+    fun onPreviousStepClick() {
         val currentStep = _uiState.value.selectedStep
         val newStep = getPreviousFormStep(currentStep) ?: return
         _uiState.update { it.copy(selectedStep = newStep) }
