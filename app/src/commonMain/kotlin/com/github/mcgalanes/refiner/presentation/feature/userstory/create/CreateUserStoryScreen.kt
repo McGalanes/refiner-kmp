@@ -1,10 +1,17 @@
 package com.github.mcgalanes.refiner.presentation.feature.userstory.create
 
 import NeedForm
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -62,21 +69,25 @@ private fun CreateUserStoryScreen(
         ) {
             VerticalSpacer(24.dp)
 
-            when (state.selectedStep) {
-                FormStep.Need -> {
-                    NeedForm(
-                        persona = state.persona,
-                        wish = state.wish,
-                        purpose = state.purpose,
-                        onPersonaChange = onPersonaChange,
-                        onWishChange = onWishChange,
-                        onPurposeChange = onPurposeChange,
-                    )
+            Crossfade(
+                targetState = state.selectedStep,
+                animationSpec = spring(),
+            ) { selectedStep ->
+                when (selectedStep) {
+                    FormStep.Need -> {
+                        NeedForm(
+                            persona = state.persona,
+                            wish = state.wish,
+                            purpose = state.purpose,
+                            onPersonaChange = onPersonaChange,
+                            onWishChange = onWishChange,
+                            onPurposeChange = onPurposeChange,
+                        )
+                    }
+                    
+                    else -> {}
                 }
-
-                else -> {}
             }
-
 
             VerticalSpacer(24.dp)
         }
