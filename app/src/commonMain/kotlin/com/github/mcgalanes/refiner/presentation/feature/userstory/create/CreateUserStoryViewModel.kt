@@ -46,6 +46,10 @@ class CreateUserStoryViewModel(
         _uiState.update { it.copy(solution = solution) }
     }
 
+    fun onAssetsChange(assets: String) {
+        _uiState.update { it.copy(assets = assets) }
+    }
+
     fun onSelectStep(step: FormStep) {
         _uiState.update { it.copy(selectedStep = step) }
     }

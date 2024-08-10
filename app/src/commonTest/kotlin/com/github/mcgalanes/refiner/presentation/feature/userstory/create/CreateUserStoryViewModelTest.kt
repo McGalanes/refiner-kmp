@@ -119,6 +119,38 @@ class CreateUserStoryViewModelTest {
     }
 
     @Test
+    fun `on solution change, should update it`() {
+        // GIVEN
+        val viewModel = viewModel()
+        val input = "solution"
+
+        // WHEN
+        viewModel.onSolutionChange(input)
+
+        // THEN
+        assertEquals(
+            input,
+            viewModel.uiState.value.solution,
+        )
+    }
+
+    @Test
+    fun `on assets change, should update it`() {
+        // GIVEN
+        val viewModel = viewModel()
+        val input = "- assets 1\n- assets 2"
+
+        // WHEN
+        viewModel.onAssetsChange(input)
+
+        // THEN
+        assertEquals(
+            input,
+            viewModel.uiState.value.assets,
+        )
+    }
+
+    @Test
     fun `on select step, should select it`() {
         // GIVEN
         val viewModel = viewModel()
@@ -167,22 +199,6 @@ class CreateUserStoryViewModelTest {
         assertEquals(
             previousStep,
             viewModel.uiState.value.selectedStep,
-        )
-    }
-
-    @Test
-    fun `on solution change, should update it`() {
-        // GIVEN
-        val viewModel = viewModel()
-        val input = "solution"
-
-        // WHEN
-        viewModel.onSolutionChange(input)
-
-        // THEN
-        assertEquals(
-            input,
-            viewModel.uiState.value.solution,
         )
     }
 

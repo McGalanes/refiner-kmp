@@ -41,4 +41,10 @@
     <string name="userstory_create_step_solution_tips_2_title">Example</string>
     <string name="userstory_create_step_solution_tips_2_description">Contact form that send an e-mail.</string>
 
+    <string name="userstory_create_step_assets_title">Do we have all the assets needed to implement this feature?</string>
+    <string name="userstory_create_step_assets_input_label">Assets</string>
+    <string name="userstory_create_step_assets_tips_1_title">Assets?</string>
+    <string name="userstory_create_step_assets_tips_1_description">Assets are usually the elements (images, strings, mockups) that enhance the visual aspect of a feature.</string>
+
+    
 </resources>

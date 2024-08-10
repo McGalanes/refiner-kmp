@@ -1,5 +1,6 @@
 package com.github.mcgalanes.refiner.presentation.feature.userstory.create
 
+import AssetsForm
 import BusinessValueForm
 import KpiForm
 import NeedForm
@@ -38,6 +39,7 @@ internal fun CreateUserStoryScreen(
         onKpiChange = viewModel::onKpiChange,
         onBusinessValueChange = viewModel::onBusinessValueChange,
         onSolutionChange = viewModel::onSolutionChange,
+        onAssetsChange = viewModel::onAssetsChange,
         onNextStepClick = viewModel::onNextStepClick,
         onPreviousStepClick = viewModel::onPreviousStepClick,
         modifier = modifier,
@@ -55,6 +57,7 @@ private fun CreateUserStoryScreen(
     onKpiChange: (String) -> Unit,
     onBusinessValueChange: (String) -> Unit,
     onSolutionChange: (String) -> Unit,
+    onAssetsChange: (String) -> Unit,
     onNextStepClick: () -> Unit,
     onPreviousStepClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -107,6 +110,13 @@ private fun CreateUserStoryScreen(
                         SolutionForm(
                             solution = state.solution,
                             onSolutionChange = onSolutionChange,
+                        )
+                    }
+
+                    FormStep.Assets -> {
+                        AssetsForm(
+                            assets = state.assets,
+                            onAssetsChange = onAssetsChange,
                         )
                     }
 
