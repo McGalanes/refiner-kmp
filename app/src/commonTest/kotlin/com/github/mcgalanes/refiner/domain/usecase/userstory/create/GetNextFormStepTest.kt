@@ -34,18 +34,10 @@ class GetNextFormStepTest {
     }
 
     @Test
-    fun `should return Enablers when current is Solution`() {
-        assertEquals(
-            FormStep.Enablers,
-            getNextFormStep(current = FormStep.Solution)
-        )
-    }
-
-    @Test
-    fun `should return Assets when current is Enablers`() {
+    fun `should return Assets when current is Solution`() {
         assertEquals(
             FormStep.Assets,
-            getNextFormStep(current = FormStep.Enablers)
+            getNextFormStep(current = FormStep.Solution)
         )
     }
 

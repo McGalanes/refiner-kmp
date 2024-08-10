@@ -3,7 +3,6 @@
     <string name="userstory_create_step_kpi">KPI</string>
     <string name="userstory_create_step_business_value">Business value</string>
     <string name="userstory_create_step_solution">Solution</string>
-    <string name="userstory_create_step_enablers">Enablers</string>
     <string name="userstory_create_step_assets">Assets</string>
     <string name="userstory_create_step_uat">UAT</string>
 
@@ -45,6 +44,4 @@
     <string name="userstory_create_step_assets_input_label">Assets</string>
     <string name="userstory_create_step_assets_tips_1_title">Assets?</string>
     <string name="userstory_create_step_assets_tips_1_description">Assets are usually the elements (images, strings, mockups) that enhance the visual aspect of a feature.</string>
-
-    
 </resources>

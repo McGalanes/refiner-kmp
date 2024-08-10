@@ -5,7 +5,6 @@ enum class FormStep {
     Kpi,
     BusinessValue,
     Solution,
-    Enablers,
     Assets,
     Uat,
 }
