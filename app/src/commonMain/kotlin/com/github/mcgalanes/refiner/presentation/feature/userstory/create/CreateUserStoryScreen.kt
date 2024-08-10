@@ -3,6 +3,7 @@ package com.github.mcgalanes.refiner.presentation.feature.userstory.create
 import BusinessValueForm
 import KpiForm
 import NeedForm
+import SolutionForm
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.Column
@@ -36,6 +37,7 @@ internal fun CreateUserStoryScreen(
         onPurposeChange = viewModel::onPurposeChange,
         onKpiChange = viewModel::onKpiChange,
         onBusinessValueChange = viewModel::onBusinessValueChange,
+        onSolutionChange = viewModel::onSolutionChange,
         onNextStepClick = viewModel::onNextStepClick,
         onPreviousStepClick = viewModel::onPreviousStepClick,
         modifier = modifier,
@@ -52,6 +54,7 @@ private fun CreateUserStoryScreen(
     onPurposeChange: (String) -> Unit,
     onKpiChange: (String) -> Unit,
     onBusinessValueChange: (String) -> Unit,
+    onSolutionChange: (String) -> Unit,
     onNextStepClick: () -> Unit,
     onPreviousStepClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -97,6 +100,13 @@ private fun CreateUserStoryScreen(
                         BusinessValueForm(
                             businessValue = state.businessValue,
                             onBusinessValueChange = onBusinessValueChange,
+                        )
+                    }
+
+                    FormStep.Solution -> {
+                        SolutionForm(
+                            solution = state.solution,
+                            onSolutionChange = onSolutionChange,
                         )
                     }
 

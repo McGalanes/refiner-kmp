@@ -9,6 +9,7 @@ data class UiState(
     val purpose: String,
     val kpi: String,
     val businessValue: Int?,
+    val solution: String,
 ) {
     companion object {
         val Default =
@@ -18,7 +19,8 @@ data class UiState(
                 wish = "",
                 purpose = "",
                 kpi = "",
-                businessValue = 0,
+                businessValue = null,
+                solution = "",
             )
     }
 }

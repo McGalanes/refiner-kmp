@@ -42,6 +42,10 @@ class CreateUserStoryViewModel(
         }
     }
 
+    fun onSolutionChange(solution: String) {
+        _uiState.update { it.copy(solution = solution) }
+    }
+
     fun onSelectStep(step: FormStep) {
         _uiState.update { it.copy(selectedStep = step) }
     }

@@ -170,6 +170,22 @@ class CreateUserStoryViewModelTest {
         )
     }
 
+    @Test
+    fun `on solution change, should update it`() {
+        // GIVEN
+        val viewModel = viewModel()
+        val input = "solution"
+
+        // WHEN
+        viewModel.onSolutionChange(input)
+
+        // THEN
+        assertEquals(
+            input,
+            viewModel.uiState.value.solution,
+        )
+    }
+
     private fun viewModel(
         getNextFormStep: (FormStep) -> FormStep = { throw NotImplementedError() },
         getPreviousFormStep: (FormStep) -> FormStep = { throw NotImplementedError() },

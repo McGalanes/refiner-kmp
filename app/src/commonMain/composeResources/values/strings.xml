@@ -33,4 +33,12 @@
     <string name="userstory_create_step_business_value_tips_1_title">Objective</string>
     <string name="userstory_create_step_business_value_tips_1_description">Business value helps prioritize the User Stories to be implemented.\nIt also helps identify which features bring a lot of value to our users.</string>
     <string name="userstory_create_step_business_value_input_label">Business value</string>
+
+    <string name="userstory_create_step_solution_title">How to meet the need?</string>
+    <string name="userstory_create_step_solution_input_label">Solution</string>
+    <string name="userstory_create_step_solution_tips_1_title">Objective</string>
+    <string name="userstory_create_step_solution_tips_1_description">To agree on the solution.</string>
+    <string name="userstory_create_step_solution_tips_2_title">Example</string>
+    <string name="userstory_create_step_solution_tips_2_description">Contact form that send an e-mail.</string>
+
 </resources>
