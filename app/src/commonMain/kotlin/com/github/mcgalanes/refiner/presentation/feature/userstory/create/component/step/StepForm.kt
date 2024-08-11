@@ -6,6 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.github.mcgalanes.refiner.core.design.component.spacer.VerticalSpacer
 import com.github.mcgalanes.refiner.presentation.feature.userstory.create.component.TipsBox
@@ -28,7 +29,7 @@ internal fun StepForm(
     ) {
         Text(
             text = title,
-            style = MaterialTheme.typography.headlineSmall,
+            style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
         )
 
         subtitle?.let {
