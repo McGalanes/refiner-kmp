@@ -1,6 +1,9 @@
 package com.github.mcgalanes.refiner.core.design.theme
 
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
 
 val Green10 = Color(0xff003324)
 val Green20 = Color(0xff006647)
@@ -40,3 +43,22 @@ val GreenGrey30 = Color(0xFF376255)
 val GreenGrey50 = Color(0xFF5ca38e)
 val GreenGrey80 = Color(0xFFbedad2)
 val GreenGrey90 = Color(0xFFdeede8)
+
+val Color.dim1: Color
+    @Composable get() = this.copy(alpha = .72f)
+
+val Color.dim2: Color
+    @Composable get() = this.copy(alpha = .56f)
+
+val Color.dim3: Color
+    @Composable get() = this.copy(alpha = .40f)
+
+val Color.dim4: Color
+    @Composable get() = this.copy(alpha = .16f)
+
+val Color.dim5: Color
+    @Composable get() = this.copy(alpha = .08f)
+
+val Color.disabled: Color
+    @Composable get() = this.dim3.compositeOver(MaterialTheme.colorScheme.surface)
+
